@@ -1,0 +1,147 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <property name="autoIncrement" value="false" dbms="oracle"/>
+    <property name="autoIncrement" value="true" dbms="mysql,mssql,h2,postgresql,sybase"/>
+    <property name="intType" value="bigint" dbms="postgresql"/>
+    <property name="intType" value="int(11)" dbms="mysql,mssql,h2,oracle,sybase"/>
+
+
+    <changeSet id="EXT-20200529-001" author="ctsi">
+        <sql dbms="postgresql" >
+            delete from cscp_dic;
+            delete from cscp_menus;
+            delete from cscp_org;
+            delete from cscp_role_menu;
+            delete from cscp_roles;
+            delete from cscp_user;
+            delete from cscp_user_detail;
+            delete from cscp_user_role;
+
+            INSERT INTO "cscp_dic"("dic_type", "dic_value", "dic_display", "dic_group_id", "dic_parent_id", "dic_order", "dic_icon", "dic_check_radio") VALUES (1, 1, '是', NULL, NULL, 1, NULL, NULL);
+            INSERT INTO "cscp_dic"("dic_type", "dic_value", "dic_display", "dic_group_id", "dic_parent_id", "dic_order", "dic_icon", "dic_check_radio") VALUES (1, 2, '否', NULL, NULL, 2, NULL, NULL);
+            INSERT INTO "cscp_dic"("dic_type", "dic_value", "dic_display", "dic_group_id", "dic_parent_id", "dic_order", "dic_icon", "dic_check_radio") VALUES (2, 1, '多选', NULL, NULL, 1, NULL, NULL);
+            INSERT INTO "cscp_dic"("dic_type", "dic_value", "dic_display", "dic_group_id", "dic_parent_id", "dic_order", "dic_icon", "dic_check_radio") VALUES (2, 2, '单选', NULL, NULL, 2, NULL, NULL);
+            INSERT INTO "cscp_dic"("dic_type", "dic_value", "dic_display", "dic_group_id", "dic_parent_id", "dic_order", "dic_icon", "dic_check_radio") VALUES (3, 1, '文本框', NULL, NULL, 1, NULL, NULL);
+            INSERT INTO "cscp_dic"("dic_type", "dic_value", "dic_display", "dic_group_id", "dic_parent_id", "dic_order", "dic_icon", "dic_check_radio") VALUES (3, 2, '下拉框', NULL, NULL, 2, NULL, NULL);
+            INSERT INTO "cscp_dic"("dic_type", "dic_value", "dic_display", "dic_group_id", "dic_parent_id", "dic_order", "dic_icon", "dic_check_radio") VALUES (3, 3, '日期选择', NULL, NULL, 3, NULL, NULL);
+            INSERT INTO "cscp_dic"("dic_type", "dic_value", "dic_display", "dic_group_id", "dic_parent_id", "dic_order", "dic_icon", "dic_check_radio") VALUES (3, 4, '日期范围选择', NULL, NULL, 4, NULL, NULL);
+            INSERT INTO "cscp_dic"("dic_type", "dic_value", "dic_display", "dic_group_id", "dic_parent_id", "dic_order", "dic_icon", "dic_check_radio") VALUES (3, 5, '打分（星形）', NULL, NULL, 5, NULL, NULL);
+            INSERT INTO "cscp_dic"("dic_type", "dic_value", "dic_display", "dic_group_id", "dic_parent_id", "dic_order", "dic_icon", "dic_check_radio") VALUES (3, 6, '下拉多选', NULL, NULL, 6, NULL, NULL);
+            INSERT INTO "cscp_dic"("dic_type", "dic_value", "dic_display", "dic_group_id", "dic_parent_id", "dic_order", "dic_icon", "dic_check_radio") VALUES (3, 7, '勾选多选', NULL, NULL, 7, NULL, NULL);
+            INSERT INTO "cscp_dic"("dic_type", "dic_value", "dic_display", "dic_group_id", "dic_parent_id", "dic_order", "dic_icon", "dic_check_radio") VALUES (3, 8, '勾选单选', NULL, NULL, 8, NULL, NULL);
+            INSERT INTO "cscp_dic"("dic_type", "dic_value", "dic_display", "dic_group_id", "dic_parent_id", "dic_order", "dic_icon", "dic_check_radio") VALUES (3, 9, '单选toggle', NULL, NULL, 9, NULL, NULL);
+            INSERT INTO "cscp_dic"("dic_type", "dic_value", "dic_display", "dic_group_id", "dic_parent_id", "dic_order", "dic_icon", "dic_check_radio") VALUES (3, 10, '大文本框', NULL, NULL, 10, NULL, NULL);
+            INSERT INTO "cscp_dic"("dic_type", "dic_value", "dic_display", "dic_group_id", "dic_parent_id", "dic_order", "dic_icon", "dic_check_radio") VALUES (3, 11, '时间选择', NULL, NULL, 11, NULL, NULL);
+            INSERT INTO "cscp_dic"("dic_type", "dic_value", "dic_display", "dic_group_id", "dic_parent_id", "dic_order", "dic_icon", "dic_check_radio") VALUES (3, 12, '文件上传', NULL, NULL, 12, NULL, NULL);
+            INSERT INTO "cscp_dic"("dic_type", "dic_value", "dic_display", "dic_group_id", "dic_parent_id", "dic_order", "dic_icon", "dic_check_radio") VALUES (3, 13, '打分（奖杯）', NULL, NULL, 13, NULL, NULL);
+            INSERT INTO "cscp_dic"("dic_type", "dic_value", "dic_display", "dic_group_id", "dic_parent_id", "dic_order", "dic_icon", "dic_check_radio") VALUES (3, 14, 'Email', NULL, NULL, 14, NULL, NULL);
+            INSERT INTO "cscp_dic"("dic_type", "dic_value", "dic_display", "dic_group_id", "dic_parent_id", "dic_order", "dic_icon", "dic_check_radio") VALUES (3, 15, '数字-整数', NULL, NULL, 15, NULL, NULL);
+            INSERT INTO "cscp_dic"("dic_type", "dic_value", "dic_display", "dic_group_id", "dic_parent_id", "dic_order", "dic_icon", "dic_check_radio") VALUES (3, 16, '数字-小数', NULL, NULL, 16, NULL, NULL);
+            INSERT INTO "cscp_dic"("dic_type", "dic_value", "dic_display", "dic_group_id", "dic_parent_id", "dic_order", "dic_icon", "dic_check_radio") VALUES (3, 17, '电话', NULL, NULL, 17, NULL, NULL);
+            INSERT INTO "cscp_dic"("dic_type", "dic_value", "dic_display", "dic_group_id", "dic_parent_id", "dic_order", "dic_icon", "dic_check_radio") VALUES (3, 18, '时间选择-圆形', NULL, NULL, 18, NULL, NULL);
+            INSERT INTO "cscp_dic"("dic_type", "dic_value", "dic_display", "dic_group_id", "dic_parent_id", "dic_order", "dic_icon", "dic_check_radio") VALUES (3, 19, '数字-spinner', NULL, NULL, 19, NULL, NULL);
+            INSERT INTO "cscp_dic"("dic_type", "dic_value", "dic_display", "dic_group_id", "dic_parent_id", "dic_order", "dic_icon", "dic_check_radio") VALUES (3, 20, '数字-Knob', NULL, NULL, 20, NULL, NULL);
+            INSERT INTO "cscp_dic"("dic_type", "dic_value", "dic_display", "dic_group_id", "dic_parent_id", "dic_order", "dic_icon", "dic_check_radio") VALUES (3, 21, 'Phone-mask', NULL, NULL, 21, NULL, NULL);
+            INSERT INTO "cscp_dic"("dic_type", "dic_value", "dic_display", "dic_group_id", "dic_parent_id", "dic_order", "dic_icon", "dic_check_radio") VALUES (3, 22, '信用卡-mask', NULL, NULL, 22, NULL, NULL);
+            INSERT INTO "cscp_dic"("dic_type", "dic_value", "dic_display", "dic_group_id", "dic_parent_id", "dic_order", "dic_icon", "dic_check_radio") VALUES (3, 23, 'Tax-mask', NULL, NULL, 23, NULL, NULL);
+            INSERT INTO "cscp_dic"("dic_type", "dic_value", "dic_display", "dic_group_id", "dic_parent_id", "dic_order", "dic_icon", "dic_check_radio") VALUES (3, 24, 'SN-mask', NULL, NULL, 24, NULL, NULL);
+            INSERT INTO "cscp_dic"("dic_type", "dic_value", "dic_display", "dic_group_id", "dic_parent_id", "dic_order", "dic_icon", "dic_check_radio") VALUES (3, 25, 'Silder', NULL, NULL, 25, NULL, NULL);
+            INSERT INTO "cscp_dic"("dic_type", "dic_value", "dic_display", "dic_group_id", "dic_parent_id", "dic_order", "dic_icon", "dic_check_radio") VALUES (3, 26, 'Silder-vertical', NULL, NULL, 26, NULL, NULL);
+            INSERT INTO "cscp_dic"("dic_type", "dic_value", "dic_display", "dic_group_id", "dic_parent_id", "dic_order", "dic_icon", "dic_check_radio") VALUES (4, 1, '女', NULL, NULL, 1, 'fa fa-female', NULL);
+            INSERT INTO "cscp_dic"("dic_type", "dic_value", "dic_display", "dic_group_id", "dic_parent_id", "dic_order", "dic_icon", "dic_check_radio") VALUES (4, 2, '男', NULL, NULL, 2, 'fa fa-male', NULL);
+            INSERT INTO "cscp_dic"("dic_type", "dic_value", "dic_display", "dic_group_id", "dic_parent_id", "dic_order", "dic_icon", "dic_check_radio") VALUES (5, 1, '高', NULL, NULL, 1, NULL, NULL);
+            INSERT INTO "cscp_dic"("dic_type", "dic_value", "dic_display", "dic_group_id", "dic_parent_id", "dic_order", "dic_icon", "dic_check_radio") VALUES (5, 2, '中', NULL, NULL, 2, NULL, NULL);
+            INSERT INTO "cscp_dic"("dic_type", "dic_value", "dic_display", "dic_group_id", "dic_parent_id", "dic_order", "dic_icon", "dic_check_radio") VALUES (5, 3, '低', NULL, NULL, 3, NULL, NULL);
+            INSERT INTO "cscp_dic"("dic_type", "dic_value", "dic_display", "dic_group_id", "dic_parent_id", "dic_order", "dic_icon", "dic_check_radio") VALUES (6, 1, '收集需求', NULL, NULL, 1, NULL, NULL);
+            INSERT INTO "cscp_dic"("dic_type", "dic_value", "dic_display", "dic_group_id", "dic_parent_id", "dic_order", "dic_icon", "dic_check_radio") VALUES (6, 2, '需求分析', NULL, NULL, 2, '', NULL);
+            INSERT INTO "cscp_dic"("dic_type", "dic_value", "dic_display", "dic_group_id", "dic_parent_id", "dic_order", "dic_icon", "dic_check_radio") VALUES (6, 3, '纳入需求管理', NULL, NULL, 3, NULL, NULL);
+            INSERT INTO "cscp_dic"("dic_type", "dic_value", "dic_display", "dic_group_id", "dic_parent_id", "dic_order", "dic_icon", "dic_check_radio") VALUES (6, 4, '进入开发', NULL, NULL, 4, NULL, NULL);
+            INSERT INTO "cscp_dic"("dic_type", "dic_value", "dic_display", "dic_group_id", "dic_parent_id", "dic_order", "dic_icon", "dic_check_radio") VALUES (6, 5, '测试完成', NULL, NULL, 5, NULL, NULL);
+            INSERT INTO "cscp_dic"("dic_type", "dic_value", "dic_display", "dic_group_id", "dic_parent_id", "dic_order", "dic_icon", "dic_check_radio") VALUES (6, 6, '上线', NULL, NULL, 6, NULL, NULL);
+            INSERT INTO "cscp_dic"("dic_type", "dic_value", "dic_display", "dic_group_id", "dic_parent_id", "dic_order", "dic_icon", "dic_check_radio") VALUES (6, 7, '已经回复', NULL, NULL, 7, NULL, NULL);
+            INSERT INTO "cscp_dic"("dic_type", "dic_value", "dic_display", "dic_group_id", "dic_parent_id", "dic_order", "dic_icon", "dic_check_radio") VALUES (6, 8, '更新解释', NULL, NULL, 8, NULL, NULL);
+            INSERT INTO "cscp_dic"("dic_type", "dic_value", "dic_display", "dic_group_id", "dic_parent_id", "dic_order", "dic_icon", "dic_check_radio") VALUES (7, 1, '大', NULL, NULL, 1, NULL, NULL);
+            INSERT INTO "cscp_dic"("dic_type", "dic_value", "dic_display", "dic_group_id", "dic_parent_id", "dic_order", "dic_icon", "dic_check_radio") VALUES (7, 2, '小', NULL, NULL, 2, NULL, NULL);
+            INSERT INTO "cscp_dic"("dic_type", "dic_value", "dic_display", "dic_group_id", "dic_parent_id", "dic_order", "dic_icon", "dic_check_radio") VALUES (10, 100001, '平台管理员', NULL, NULL, 1, NULL, NULL);
+            INSERT INTO "cscp_dic"("dic_type", "dic_value", "dic_display", "dic_group_id", "dic_parent_id", "dic_order", "dic_icon", "dic_check_radio") VALUES (10, 100002, '平台操作员', NULL, NULL, 2, NULL, NULL);
+            INSERT INTO "cscp_dic"("dic_type", "dic_value", "dic_display", "dic_group_id", "dic_parent_id", "dic_order", "dic_icon", "dic_check_radio") VALUES (10, 100003, '平台其他人员', NULL, NULL, 3, NULL, NULL);
+            INSERT INTO "cscp_dic"("dic_type", "dic_value", "dic_display", "dic_group_id", "dic_parent_id", "dic_order", "dic_icon", "dic_check_radio") VALUES (10, 200001, '外部企业信息填报人员', NULL, NULL, 4, NULL, NULL);
+            INSERT INTO "cscp_dic"("dic_type", "dic_value", "dic_display", "dic_group_id", "dic_parent_id", "dic_order", "dic_icon", "dic_check_radio") VALUES (10, 200002, '外部企业其他人员', NULL, NULL, 5, NULL, NULL);
+            INSERT INTO "cscp_dic"("dic_type", "dic_value", "dic_display", "dic_group_id", "dic_parent_id", "dic_order", "dic_icon", "dic_check_radio") VALUES (11, 1, 'Always', NULL, NULL, 1, NULL, NULL);
+            INSERT INTO "cscp_dic"("dic_type", "dic_value", "dic_display", "dic_group_id", "dic_parent_id", "dic_order", "dic_icon", "dic_check_radio") VALUES (11, 2, 'IfNotPresent', NULL, NULL, 2, NULL, NULL);
+            INSERT INTO "cscp_dic"("dic_type", "dic_value", "dic_display", "dic_group_id", "dic_parent_id", "dic_order", "dic_icon", "dic_check_radio") VALUES (11, 3, 'Never', NULL, NULL, 3, NULL, NULL);
+            INSERT INTO "cscp_dic"("dic_type", "dic_value", "dic_display", "dic_group_id", "dic_parent_id", "dic_order", "dic_icon", "dic_check_radio") VALUES (12, 1, '5.7.14', NULL, NULL, 1, NULL, NULL);
+            INSERT INTO "cscp_dic"("dic_type", "dic_value", "dic_display", "dic_group_id", "dic_parent_id", "dic_order", "dic_icon", "dic_check_radio") VALUES (12, 2, '5.7.15', NULL, NULL, 2, NULL, NULL);
+            INSERT INTO "cscp_dic"("dic_type", "dic_value", "dic_display", "dic_group_id", "dic_parent_id", "dic_order", "dic_icon", "dic_check_radio") VALUES (13, 1, 'ceph-rbd', NULL, NULL, 1, NULL, NULL);
+
+            INSERT INTO "cscp_menus"("name", "icon", "title", "url", "http_method", "component", "parent_id", "type", "permission_code", "orderby") VALUES ('authority', 'md-key', '权限管理', '/authority', '*', 'views/main/main.vue', 0, 'menu', 'cscp.authority', 1);
+            INSERT INTO "cscp_menus"("name", "icon", "title", "url", "http_method", "component", "parent_id", "type", "permission_code", "orderby") VALUES ('user-management', 'md-man', '用户管理', 'userManagement', '*', '', 1, 'menu', 'cscp.user.query', 2);
+            INSERT INTO "cscp_menus"("name", "icon", "title", "url", "http_method", "component", "parent_id", "type", "permission_code", "orderby") VALUES ('user-add', 'ios-body', '新增用户', 'userAdd', 'POST', NULL, 2, 'non-menu', 'cscp.user.add', 3);
+            INSERT INTO "cscp_menus"("name", "icon", "title", "url", "http_method", "component", "parent_id", "type", "permission_code", "orderby") VALUES ('user-del', 'ios-body', '删除用户', '', 'DELETE', NULL, 2, 'button', 'cscp.user.del', 4);
+            INSERT INTO "cscp_menus"("name", "icon", "title", "url", "http_method", "component", "parent_id", "type", "permission_code", "orderby") VALUES ('user-edit', 'ios-body', '编辑用户', 'userEdit', 'PUT', NULL, 2, 'non-menu', 'cscp.user.edit', 5);
+            INSERT INTO "cscp_menus"("name", "icon", "title", "url", "http_method", "component", "parent_id", "type", "permission_code", "orderby") VALUES ('role-management', 'md-lock', '角色管理', 'roleManagement', '*', NULL, 1, 'menu', 'cscp.role', 6);
+            INSERT INTO "cscp_menus"("name", "icon", "title", "url", "http_method", "component", "parent_id", "type", "permission_code", "orderby") VALUES ('role-add', 'person-stalker', '增加角色', 'roleAdd', '*', NULL, 6, 'non-menu', 'cscp.role.add', 7);
+            INSERT INTO "cscp_menus"("name", "icon", "title", "url", "http_method", "component", "parent_id", "type", "permission_code", "orderby") VALUES ('role-del', 'person-stalker', '删除角色', '', '*', NULL, 6, 'button', 'cscp.role.del', 8);
+            INSERT INTO "cscp_menus"("name", "icon", "title", "url", "http_method", "component", "parent_id", "type", "permission_code", "orderby") VALUES ('role-edit', 'person-stalker', '编辑角色', 'roleEdit', '*', NULL, 6, 'non-menu', 'cscp.role.edit', 9);
+            INSERT INTO "cscp_menus"("name", "icon", "title", "url", "http_method", "component", "parent_id", "type", "permission_code", "orderby") VALUES ('workgroup-management', 'md-contacts', '工作组管理', 'workgroupManagement', '*', NULL, 1, 'menu', 'cscp.wg', 10);
+            INSERT INTO "cscp_menus"("name", "icon", "title", "url", "http_method", "component", "parent_id", "type", "permission_code", "orderby") VALUES ('workgroup-add', 'ios-body', '增加工作组', 'workgroupAdd', 'POST', '', 10, 'non-menu', 'cscp.wg.add', 11);
+            INSERT INTO "cscp_menus"("name", "icon", "title", "url", "http_method", "component", "parent_id", "type", "permission_code", "orderby") VALUES ('workgroup-del', 'ios-body', '删除工作组', '', 'DELETE', '', 10, 'button', 'cscp.wg.del', 12);
+            INSERT INTO "cscp_menus"("name", "icon", "title", "url", "http_method", "component", "parent_id", "type", "permission_code", "orderby") VALUES ('workgroup-edit', 'ios-body', '编辑工作组', 'workgroupEdit', 'PUT', '', 10, 'non-menu', 'cscp.wg.edit', 13);
+            INSERT INTO "cscp_menus"("name", "icon", "title", "url", "http_method", "component", "parent_id", "type", "permission_code", "orderby") VALUES ('organization-management', 'logo-buffer', '机构管理', 'organizationManagement', '*', '', 1, 'menu', 'cscp.org.query', 14);
+            INSERT INTO "cscp_menus"("name", "icon", "title", "url", "http_method", "component", "parent_id", "type", "permission_code", "orderby") VALUES ('organization-edit', 'ios-body', '编辑机构', 'organizationEdit', '*', '', 14, 'non-menu', 'cscp.org.edit', 15);
+            INSERT INTO "cscp_menus"("name", "icon", "title", "url", "http_method", "component", "parent_id", "type", "permission_code", "orderby") VALUES ('logging-management', 'md-paper', '日志管理', '/logging', '*', 'views/main/main.vue', 0, 'menu', 'cscp.logging', 16);
+            INSERT INTO "cscp_menus"("name", "icon", "title", "url", "http_method", "component", "parent_id", "type", "permission_code", "orderby") VALUES ('logging-login', 'md-copy', '登录日志', 'login', '*', '', 16, 'menu', 'cscp.logging.login', 17);
+            INSERT INTO "cscp_menus"("name", "icon", "title", "url", "http_method", "component", "parent_id", "type", "permission_code", "orderby") VALUES ('logging-operation', 'md-copy', '操作日志', 'operation', '*', '', 16, 'menu', 'cscp.logging.operation', 18);
+            INSERT INTO "cscp_menus"("name", "icon", "title", "url", "http_method", "component", "parent_id", "type", "permission_code", "orderby") VALUES ('non-mem-mian', 'md-key', '非菜单页面', '/non-mem-mian', '*', 'views/main/main.vue', 0, 'non-menu', 'cscp.logging.operation', 19);
+            INSERT INTO "cscp_menus"("name", "icon", "title", "url", "http_method", "component", "parent_id", "type", "permission_code", "orderby") VALUES ('self-edit', 'md-key', '个人信息编辑', '/self-edit', '*', '', 19, 'non-menu', '', 20);
+            INSERT INTO "cscp_menus"("name", "icon", "title", "url", "http_method", "component", "parent_id", "type", "permission_code", "orderby") VALUES ('async-routes-config', 'md-transgender', '异步路由管理', 'async-routes-config', '*', '', 1, 'menu', 'cscp.sr', 21);
+
+            INSERT INTO "cscp_org"("org_name", "description", "parent_id", "orderby") VALUES ('机构', NULL, 1, 1);
+
+            INSERT INTO "cscp_role_menu"("role_id", "menu_id") VALUES (1, 1);
+            INSERT INTO "cscp_role_menu"("role_id", "menu_id") VALUES (1, 2);
+            INSERT INTO "cscp_role_menu"("role_id", "menu_id") VALUES (1, 3);
+            INSERT INTO "cscp_role_menu"("role_id", "menu_id") VALUES (1, 4);
+            INSERT INTO "cscp_role_menu"("role_id", "menu_id") VALUES (1, 5);
+            INSERT INTO "cscp_role_menu"("role_id", "menu_id") VALUES (1, 6);
+            INSERT INTO "cscp_role_menu"("role_id", "menu_id") VALUES (1, 7);
+            INSERT INTO "cscp_role_menu"("role_id", "menu_id") VALUES (1, 8);
+            INSERT INTO "cscp_role_menu"("role_id", "menu_id") VALUES (1, 9);
+            INSERT INTO "cscp_role_menu"("role_id", "menu_id") VALUES (1, 10);
+            INSERT INTO "cscp_role_menu"("role_id", "menu_id") VALUES (1, 11);
+            INSERT INTO "cscp_role_menu"("role_id", "menu_id") VALUES (1, 12);
+            INSERT INTO "cscp_role_menu"("role_id", "menu_id") VALUES (1, 13);
+            INSERT INTO "cscp_role_menu"("role_id", "menu_id") VALUES (1, 14);
+            INSERT INTO "cscp_role_menu"("role_id", "menu_id") VALUES (1, 15);
+            INSERT INTO "cscp_role_menu"("role_id", "menu_id") VALUES (1, 16);
+            INSERT INTO "cscp_role_menu"("role_id", "menu_id") VALUES (1, 17);
+            INSERT INTO "cscp_role_menu"("role_id", "menu_id") VALUES (1, 18);
+            INSERT INTO "cscp_role_menu"("role_id", "menu_id") VALUES (1, 19);
+            INSERT INTO "cscp_role_menu"("role_id", "menu_id") VALUES (1, 20);
+            INSERT INTO "cscp_role_menu"("role_id", "menu_id") VALUES (1, 21);
+
+            INSERT INTO "cscp_roles"("name", "role_extent", "parent_id", "icon") VALUES ('admin', NULL, NULL, 'md-key');
+
+            INSERT INTO "cscp_user"("username", "password") VALUES ('admin', '$2a$10$DSZ14QjgFspWp6zST7l9j.b/MaymuXirfw2sOFKVZ2NaeEbXOzn5y');
+
+            INSERT INTO "cscp_user_detail"("user_id", "family_name", "name", "mobile", "email", "img_path", "last_login", "disc_title", "disc_detail", "register_time") VALUES (1, 'Admin', 'biyi', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+
+            INSERT INTO "cscp_user_role"("user_id", "role_id") VALUES (1, 1);
+
+
+
+
+
+
+
+
+
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>
